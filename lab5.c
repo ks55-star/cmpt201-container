@@ -89,6 +89,17 @@ int main(void) {
 
 // algorithm for coalescing
 // linked_list
-// while(linked_list->next != NULL|| linkedlist->next != NULL){
-//
-// }
+// linked list temp = head;
+// linked list left = null;
+// linked list right = null;
+// while(temp!= NULL){
+//  if((temp+size of linked list + temp->size) == z){
+//    left = temp;
+//    left-size = z->size + temp->size +sizeof linked list struct;
+//    }
+//  if((z+sizeof(linked list) + z->size)==temp){
+//    after = temp;
+//    z->size = z->size + right->size + linkedlist struct;
+//    }
+//    temp=temp->next;
+//  }
