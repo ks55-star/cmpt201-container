@@ -1,0 +1,12 @@
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+void handler(int a){
+  write(STDOUT_FILENO, "TEST\n", a);
+  return;
+}
+int main(){
+  handler();
+  return 0;
+}

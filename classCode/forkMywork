@@ -1,0 +1,7 @@
+#include <unistd.h>
+#include <stdio.h>
+int main(){
+  fork();
+  #does it simultaneously so this is where child and parent come to play
+
+}
