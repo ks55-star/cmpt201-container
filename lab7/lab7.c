@@ -76,6 +76,8 @@ int main() {
 void map(Input *input, IntermediateInput *intermediate_input) {
   // TODO:
   // Double the value of the input
+  intermediate_input->line_number = input->line_number;
+  intermediate_input->doubled_value = input->value * 2;
 }
 
 void groupByKey(IntermediateInput *input, Output *output, int *result_count) {
@@ -83,9 +85,32 @@ void groupByKey(IntermediateInput *input, Output *output, int *result_count) {
   // Group entries
   // If the doubled value exists in the output entries, add it to the output's line_numbers list
   // If it doesn't exist, add a new entry to the output
+  int k = 0;
+  int doublevalue = input->doubled_value;
+  int found = -1;
+  while (k < *result_count) {
+    if (output[k].doubled_value == doublevalue) {
+      found = 0;
+      output[k].line_numbers[output[k].count] = input->line_number;
+      output[k].count++;
+      break;
+    }
+    k++;
+  }
+  if (found == -1) {
+    output[*result_count].doubled_value = input->doubled_value;
+    output[*result_count].line_numbers[0] = input->line_number;
+    output[*result_count].count++;
+    (*result_count)++;
+  }
 }
 
 void reduce(Output *output) {
   // TODO:
   // Print the doubled number and line numbers
+  printf("(%d, [", output->doubled_value);
+  for (int j = 0; j < output->count; j++) {
+    printf(" %d,", output->line_numbers[j]);
+  }
+  printf("])\n");
 }
